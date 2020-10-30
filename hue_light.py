@@ -1,16 +1,37 @@
 # -*- coding: utf-8 -*-
- 
+
+#python -m pip install requests #Install Request Lib
+#pip install discoverhue #Install discoverhue Lib
+
+
 import requests
+import json
+import discoverhue
 
-ip_adresse='192.168.0.100' #HUE Bridge IP-Adresse
-hue_user='XXXXXXXXXXXXXXXXXX' #Hue Benutzerschlüssel
 
-light = 'http://'+ip_adresse+'/api/'+hue_user+'/lights/1/state'
+http_adress='http://192.168.0.164/'
+hue_user='xxxxx'
+light_id=1
+
+
+
+found = discoverhue.find_bridges()
+for bridge in found:
+    print('Bridge ID {br} at {ip}'.format(br=bridge, ip=found[bridge]))
+    http_adress=found[bridge]
+
+
+light = http_adress+'api/'+hue_user+'/lights/'+str(light_id)
 
 r = requests.get(light)
 
+#print(str(r.json()["state"]["on"])) #Status der Lampe auslesen
 
-#put_string='{"on":false}' #Lampe ausschalten
-put_string='{"on":true}' #Lampe einschalten
+if str(r.json()["state"]["on"]) == 'False':
+    put_dict='{"on": true}' #Lampe einschalten
+else:
+    put_dict='{"on": false}' #Lampe ausschalten
 
-r = requests.put(light, put_string)
+r = requests.put(light+'/state', put_dict)
+
+return 0
