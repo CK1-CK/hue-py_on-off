@@ -8,7 +8,7 @@ import json
 import discoverhue
 
 http_adress='http://192.168.0.164/' #HUE Bridge IP-Adress incl. http
-hue_user='xxxxxxx'  #Hue Benutzerschlüssel
+hue_user='xxxxxxxy'  #Hue Benutzerschlüssel
 light_id=1
 
 auto_detect_bridge=False
