@@ -5,24 +5,16 @@
 
 import requests
 import json
-import discoverhue
+import hue_getBridgeHttpAddress
+import hue_userKey
 
-http_adress='http://192.168.0.164/' #HUE Bridge IP-Adress incl. http
-hue_user='abc'  #Hue Benutzerschlüssel
+
 light_id=1
+hue_user= hue_userKey.GetHueUserKey()  #Hue Benutzerschlüssel
 
-auto_detect_bridge=False
+http_address=hue_getBridgeHttpAddress.GetBridgeHttpAddress()
 
-try:
-    if bool(auto_detect_bridge):
-        found = discoverhue.find_bridges()
-        for bridge in found:
-            print('Bridge ID {br} at {ip}'.format(br=bridge, ip=found[bridge]))
-            http_adress=found[bridge]
-except:
-    print("Keine Bridge gefunden!")
-
-light = http_adress+'api/'+hue_user+'/lights/'+str(light_id)
+light = http_address+'api/'+hue_user+'/lights/'+str(light_id)
 
 try:
     r = requests.get(light)
