@@ -18,7 +18,7 @@ def Check24hMotion(seconds=24*3600):
 
     if(diff.total_seconds() >= seconds):
         #try:
-            email_send.SendEmail("xxxxxxx@gmail.com","Keine Bewegung - Wohnung","Es gab keine Bewegung seit: <br><br>Tagen: "+str(round(diff.total_seconds()/3600/24,4))+"<br><br>Stunden: " + str(round(diff.total_seconds()/3600,4)) +"<br><br>Minuten: "+str(round(diff.total_seconds()/60,2)))
+            email_send.SendEmail("xxxyxxxx@gmail.com","Keine Bewegung - Wohnung","Es gab keine Bewegung seit: <br><br>Tagen: "+str(round(diff.total_seconds()/3600/24,4))+"<br><br>Stunden: " + str(round(diff.total_seconds()/3600,4)) +"<br><br>Minuten: "+str(round(diff.total_seconds()/60,2)))
             print("Email versandt")
             return 0
         #except:
