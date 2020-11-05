@@ -13,13 +13,13 @@ from datetime import datetime,tzinfo,timezone
 
 motion_sensor_id=15
 
+hue_user=hue_userKey.GetHueUserKey()  #Hue Benutzerschlüssel
+http_address=hue_getBridgeHttpAddress.GetBridgeHttpAddress()
+
+sensor = http_address+'api/'+hue_user+'/sensors/'+str(motion_sensor_id)
+
 
 def GetLastMotionDateTime():
-    hue_user=hue_userKey.GetHueUserKey()  #Hue Benutzerschlüssel
-    http_address=hue_getBridgeHttpAddress.GetBridgeHttpAddress()
-
-    sensor = http_address+'api/'+hue_user+'/sensors/'+str(motion_sensor_id)
-
     try:
         r = requests.get(sensor)
     except:
@@ -44,7 +44,6 @@ def GetLastMotionDateTime():
 
         #print(last_motion_utc) #Letzte Bewegung UTC
         #print(last_motion_localTime) #Letzte Bewegung Local Time
-
         return last_motion_localTime
 
     except:
