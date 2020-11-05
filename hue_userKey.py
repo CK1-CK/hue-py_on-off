@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-UserKey='xxxxxxxxxxxxxxxxxxxxxxxxx' #Hue Benutzerschlüssel
+UserKey='xilFZvMCmfWuUPdYRuU6mCwNpKDxQrsUzMtdkYqJ' #Hue Benutzerschlüssel
 
 def GetHueUserKey():
     return UserKey
